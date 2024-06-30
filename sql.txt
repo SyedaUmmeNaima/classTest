@@ -1,0 +1,66 @@
+--sql code
+-- Use the database
+USE Product_Management;
+
+-- Create the Rickshaw table
+CREATE TABLE Rickshaw (
+registration_number INT PRIMARY KEY,
+name VARCHAR(50),
+speed INT
+);
+
+-- Create the Driver table
+CREATE TABLE Driver (
+driving_license_number INT PRIMARY KEY,
+name VARCHAR(50)
+);
+
+-- Create the Rickshaw_Driver_Mapping table
+CREATE TABLE Rickshaw_Driver_Mapping (
+rickshaw_id INT,
+driver_id INT,
+date_of_joining DATE,
+PRIMARY KEY (rickshaw_id, driver_id),
+FOREIGN KEY (rickshaw_id) REFERENCES Rickshaw(registration_number),
+FOREIGN KEY (driver_id) REFERENCES Driver(driving_license_number)
+);
+
+-- Insert entries into Rickshaw table
+INSERT INTO Rickshaw (registration_number, name, speed) VALUES
+(1, 'Rickshaw 1', 12),
+(2, 'Rickshaw 2', 8),
+(3, 'Rickshaw 3', 20),
+(4, 'Rickshaw 4', 15),
+(5, 'Rickshaw 5', 5),
+(6, 'Rickshaw 6', 3),
+(7, 'Rickshaw 7', 18),
+(8, 'Rickshaw 8', 7),
+(9, 'Rickshaw 9', 22),
+(10, 'Rickshaw 10', 10);
+
+-- Insert entries into Driver table
+INSERT INTO Driver (driving_license_number, name) VALUES
+(1001, 'Driver 1'),
+(1002, 'Driver 2'),
+(1003, 'Driver 3'),
+(1004, 'Driver 4'),
+(1005, 'Driver 5'),
+(1006, 'Driver 6'),
+(1007, 'Driver 7'),
+(1008, 'Driver 8'),
+(1009, 'Driver 9'),
+(1010, 'Driver 10');
+
+-- Insert entries into Rickshaw_Driver_Mapping table
+INSERT INTO Rickshaw_Driver_Mapping (rickshaw_id, driver_id, date_of_joining) VALUES
+(1, 1001, '2023-07-01'),
+(2, 1002, '2023-06-20'),
+(3, 1003, '2023-06-25'),
+(4, 1004, '2023-06-30'),
+(5, 1005, '2023-07-02'),
+(6, 1006, '2023-07-03'),
+(7, 1007, '2023-06-15'),
+(8, 1008, '2023-07-05'),
+(9, 1009, '2023-06-10'),
+(10, 1010, '2023-07-06');
+
