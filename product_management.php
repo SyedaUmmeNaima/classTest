@@ -55,6 +55,9 @@ echo json_encode($drivers);
 }
 
 
+
+
+
 // Update the speed of all the rickshaws to 15 whose speed is less than 5
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['task']) && $_POST['task'] == 'task3') {
     $sql = "UPDATE Rickshaw SET speed = 15 WHERE speed < 5";
@@ -67,7 +70,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['task']) && $_POST['ta
 
 
 
-
+// Homepage to show all the previous tasks link 
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['task'])) { 
+    echo "<h1>Product Management API</h1>"; 
+    echo "<ul>"; 
+    echo "<li><a href='api.php?task=task1'>Read rickshaw_id and name with speed greater than 10</a></li>"; 
+    echo "<li><a href='api.php?task=task2'>Read driver info who joined after June 24, 2023</a></li>"; 
+    echo "<li><form method='POST' action='api.php'><input type='hidden' name='task' value='task3'><button type='submit'>Update speed of rickshaws with speed less than 5</button></form></li>"; 
+    echo "</ul>";
+   } 
+    $conn->close();
 
 
 
